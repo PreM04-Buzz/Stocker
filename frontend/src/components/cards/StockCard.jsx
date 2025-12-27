@@ -1,29 +1,26 @@
-import MiniSparkline from "./MiniSparkline";
+import MiniPriceChart from "./MiniPriceChart";
 
 export default function StockCard({ stock }) {
   const up = stock.change >= 0;
 
   return (
-    <div className="card">
-      <div className="card-top">
+    <div className="stock-card">
+      <div className="stock-top">
         <div>
           <div className="symbol">{stock.symbol}</div>
           <div className="name">{stock.name}</div>
         </div>
-        <div className="price">
-          ${stock.price.toFixed(2)}
-          <div className={`pct ${up ? "up" : "down"}`}>
-            {up ? "▲" : "▼"} {Math.abs(stock.change).toFixed(2)}%
-          </div>
+        <div className={up ? "price up" : "price down"}>
+          ${stock.price}
         </div>
       </div>
 
-      <MiniSparkline data={stock.history} up={up} />
+      <MiniSparkline data={stock.history} positive={stock.change >= 0}/>
 
-      <div className="card-bottom">
-        <span className="muted">VolatilityLow</span>
+
+      <div className={up ? "change up" : "change down"}>
+        {up ? "▲" : "▼"} {stock.change}%
       </div>
     </div>
   );
 }
-

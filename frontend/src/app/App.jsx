@@ -1,5 +1,4 @@
 import React, { useMemo, useState } from "react";
-
 import Header from "../components/layout/Header.jsx";
 import LocationSelector from "../components/controls/LocationSelector.jsx";
 import StockCard from "../components/cards/StockCard.jsx";
@@ -41,7 +40,7 @@ export default function App() {
   return (
     <div className="page">
       <MarketFlowBackground />
-
+      
       <div className="container">
         <Header />
 
